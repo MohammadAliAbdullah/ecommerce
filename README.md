@@ -1,4 +1,4 @@
-# ecomm
+# ecommerce
 
 
 
