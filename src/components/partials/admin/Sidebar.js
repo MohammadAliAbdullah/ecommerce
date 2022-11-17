@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Sidebar = () => {
+const Sidebar = ({ routes }) => {
     return (
         <div>
             <aside className="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
@@ -30,19 +30,6 @@ const Sidebar = () => {
                                 <li className="nav-item active">
                                     <a className="nav-link pl-3" href="./index.html"><span className="ml-1 item-text">Default</span></a>
                                 </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./dashboard-analytics.html"><span className="ml-1 item-text">Analytics</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./dashboard-sales.html"><span className="ml-1 item-text">E-commerce</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./dashboard-saas.html"><span className="ml-1 item-text">Saas
-                                        Dashboard</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./dashboard-system.html"><span className="ml-1 item-text">Systems</span></a>
-                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -50,114 +37,37 @@ const Sidebar = () => {
                         <span>Components</span>
                     </p>
                     <ul className="navbar-nav flex-fill w-100 mb-2">
-                        <li className="nav-item dropdown">
-                            <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle nav-link">
-                                <i className="fe fe-box fe-16" />
-                                <span className="ml-3 item-text">UI elements</span>
-                            </a>
-                            <ul className="collapse list-unstyled pl-4 w-100" id="ui-elements">
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./ui-color.html"><span className="ml-1 item-text">Colors</span>
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./ui-typograpy.html"><span className="ml-1 item-text">Typograpy</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./ui-icons.html"><span className="ml-1 item-text">Icons</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./ui-buttons.html"><span className="ml-1 item-text">Buttons</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./ui-notification.html"><span className="ml-1 item-text">Notifications</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./ui-modals.html"><span className="ml-1 item-text">Modals</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./ui-tabs-accordion.html"><span className="ml-1 item-text">Tabs &amp;
-                                        Accordion</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./ui-progress.html"><span className="ml-1 item-text">Progress</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="nav-item w-100">
-                            <a className="nav-link" href="widgets.html">
-                                <i className="fe fe-layers fe-16" />
-                                <span className="ml-3 item-text">Widgets</span>
-                                <span className="badge badge-pill badge-primary">New</span>
-                            </a>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a href="#forms" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle nav-link">
-                                <i className="fe fe-credit-card fe-16" />
-                                <span className="ml-3 item-text">Forms</span>
-                            </a>
-                            <ul className="collapse list-unstyled pl-4 w-100" id="forms">
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./form_elements.html"><span className="ml-1 item-text">Basic
-                                        Elements</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./form_advanced.html"><span className="ml-1 item-text">Advanced
-                                        Elements</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./form_validation.html"><span className="ml-1 item-text">Validation</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./form_wizard.html"><span className="ml-1 item-text">Wizard</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./form_layouts.html"><span className="ml-1 item-text">Layouts</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./form_upload.html"><span className="ml-1 item-text">File upload</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a href="#tables" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle nav-link">
-                                <i className="fe fe-grid fe-16" />
-                                <span className="ml-3 item-text">Tables</span>
-                            </a>
-                            <ul className="collapse list-unstyled pl-4 w-100" id="tables">
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./table_basic.html"><span className="ml-1 item-text">Basic Tables</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./table_advanced.html"><span className="ml-1 item-text">Advanced
-                                        Tables</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./table_datatables.html"><span className="ml-1 item-text">Data
-                                        Tables</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a href="#charts" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle nav-link">
-                                <i className="fe fe-pie-chart fe-16" />
-                                <span className="ml-3 item-text">Charts</span>
-                            </a>
-                            <ul className="collapse list-unstyled pl-4 w-100" id="charts">
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./chart-inline.html"><span className="ml-1 item-text">Inline Chart</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./chart-chartjs.html"><span className="ml-1 item-text">Chartjs</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./chart-apexcharts.html"><span className="ml-1 item-text">ApexCharts</span></a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link pl-3" href="./datamaps.html"><span className="ml-1 item-text">Datamaps</span></a>
-                                </li>
-                            </ul>
-                        </li>
+                        {routes.map((prop, key) => {
+                            if (!prop.redirect)
+                                return (
+                                    (prop.childs) ?
+                                        <li className="nav-item dropdown">
+                                            <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                                                <i className={prop.icon} />
+                                                <span className="ml-3 item-text">{prop.name}</span>
+                                            </a>
+                                            <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                                                {
+                                                    prop.childs.map((child, key) => {
+                                                        return (
+                                                            <li className="nav-item active">
+                                                                <a to={child.layout + child.path} className="nav-link pl-3" href="#"><span className="ml-1 item-text">{child.name}</span></a>
+                                                            </li>
+                                                        );
+                                                    })
+                                                }
+                                            </ul>
+                                        </li>
+                                        :
+                                        <li className="nav-item w-100">
+                                            <a to={prop.layout + prop.path} className="nav-link" href="widgets.html">
+                                                <i className={prop.icon} />
+                                                <span className="ml-3 item-text">{prop.name}</span>
+                                            </a>
+                                        </li>
+                                );
+                            return null;
+                        })}
                     </ul>
                 </nav>
             </aside>

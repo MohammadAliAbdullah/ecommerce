@@ -11,9 +11,14 @@ import Cart from './views/web/Cart';
 import Details from './views/web/Details';
 import Contact from './views/web/Contact';
 import AdminHome from './views/admin/AdminHome';
+import { Routes } from 'react-router-dom';
+import routes from './routes';
 function App() {
+
   return (
     <div>
+{/* {routes} */}
+
       <AdminHome />
       {/* Topbar Start */}
       {/* <Header /> */}
