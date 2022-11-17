@@ -10,21 +10,23 @@ import Checkout from './views/web/Checkout';
 import Cart from './views/web/Cart';
 import Details from './views/web/Details';
 import Contact from './views/web/Contact';
+import AdminHome from './views/admin/AdminHome';
 function App() {
   return (
     <div>
+      <AdminHome />
       {/* Topbar Start */}
-      <Header />
+      {/* <Header /> */}
       {/* Topbar End */}
       {/* Navbar Start */}
-      <Menu />
+      {/* <Menu /> */}
       {/* <MenuTwo /> */}
       {/* Navbar End */}
       {/* pages */}
-      <Home />
+      {/* <Home /> */}
       {/* <Contact /> */}
       {/* Footer Start */}
-      <Footer />
+      {/* <Footer /> */}
       {/* Footer End */}
     </div>
 
