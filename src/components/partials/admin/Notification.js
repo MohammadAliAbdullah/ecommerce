@@ -61,8 +61,8 @@ const Notification = () => {
                                             <small className="badge badge-pill badge-light text-muted">1h ago</small>
                                         </div>
                                     </div>
-                                </div> {/* / .row */}
-                            </div> {/* / .list-group */}
+                                </div>
+                            </div> 
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>

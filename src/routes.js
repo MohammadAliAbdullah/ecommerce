@@ -1,10 +1,11 @@
+import Dashboard from "./views/admin/Dashboard";
 
 const dashboardRoutes = [
     {
         path: "/dashboard",
         name: "Elements",
         icon: "fe fe-box fe-1",
-        component: 'Dashboard',
+        component: Dashboard,
         layout: "/admin",
         childs: [
             {

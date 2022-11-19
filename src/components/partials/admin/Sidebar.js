@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from "react-router-dom";
 
 const Sidebar = ({ routes }) => {
     return (
@@ -51,7 +52,7 @@ const Sidebar = ({ routes }) => {
                                                     prop.childs.map((child, key) => {
                                                         return (
                                                             <li className="nav-item active">
-                                                                <a to={child.layout + child.path} className="nav-link pl-3" href="#"><span className="ml-1 item-text">{child.name}</span></a>
+                                                                <NavLink to="b" className="nav-link pl-3"><span className="ml-1 item-text">{child.name}</span></NavLink>
                                                             </li>
                                                         );
                                                     })
@@ -60,10 +61,10 @@ const Sidebar = ({ routes }) => {
                                         </li>
                                         :
                                         <li className="nav-item w-100">
-                                            <a to={prop.layout + prop.path} className="nav-link" href="widgets.html">
+                                            <NavLink to={prop.layout + prop.path} className="nav-link">
                                                 <i className={prop.icon} />
                                                 <span className="ml-3 item-text">{prop.name}</span>
-                                            </a>
+                                            </NavLink>
                                         </li>
                                 );
                             return null;
