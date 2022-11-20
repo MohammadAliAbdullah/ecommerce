@@ -52,7 +52,11 @@ const Sidebar = ({ routes }) => {
                                                     prop.childs.map((child, key) => {
                                                         return (
                                                             <li className="nav-item active">
-                                                                <NavLink to="b" className="nav-link pl-3"><span className="ml-1 item-text">{child.name}</span></NavLink>
+                                                                <NavLink to="b" className="nav-link pl-3">
+                                                                    <span className="ml-1 item-text">
+                                                                        {child.name}
+                                                                    </span>
+                                                                </NavLink>
                                                             </li>
                                                         );
                                                     })
@@ -63,7 +67,9 @@ const Sidebar = ({ routes }) => {
                                         <li className="nav-item w-100">
                                             <NavLink to={prop.layout + prop.path} className="nav-link">
                                                 <i className={prop.icon} />
-                                                <span className="ml-3 item-text">{prop.name}</span>
+                                                <span className="ml-3 item-text">
+                                                    {prop.name}
+                                                </span>
                                             </NavLink>
                                         </li>
                                 );

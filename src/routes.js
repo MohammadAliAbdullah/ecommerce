@@ -1,4 +1,20 @@
 import Dashboard from "./views/admin/Dashboard";
+import Profile from "./views/admin/Profile";
+import Table from "./views/admin/Table";
+import Typology from "./views/admin/Typology";
+/*
+[
+    {
+      path: "/",
+      element: <AdminLayout/>
+    },
+    {
+      path: "/b",
+      element: <h1>Hello world b!</h1>,
+    }
+  ]
+
+*/
 
 const dashboardRoutes = [
     {
@@ -35,21 +51,21 @@ const dashboardRoutes = [
         path: "/user",
         name: "User Profile",
         icon: "fe fe-layers fe-16",
-        component: 'UserProfile',
+        component: Profile,
         layout: "/admin",
     },
     {
         path: "/table",
         name: "Table List",
         icon: "fe fe-credit-card fe-16",
-        component: 'TableList',
+        component: Table,
         layout: "/admin",
     },
     {
         path: "/typography",
         name: "Typography",
         icon: "fe fe-grid fe-16",
-        component: 'Typography',
+        component: Typology,
         layout: "/admin",
     },
     {
