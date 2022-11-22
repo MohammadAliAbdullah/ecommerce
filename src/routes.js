@@ -21,7 +21,7 @@ const dashboardRoutes = [
         path: "/dashboard",
         name: "Elements",
         icon: "fe fe-box fe-1",
-        component: Dashboard,
+        component: <Dashboard />,
         layout: "/admin",
         childs: [
             {
@@ -51,21 +51,21 @@ const dashboardRoutes = [
         path: "/user",
         name: "User Profile",
         icon: "fe fe-layers fe-16",
-        component: Profile,
+        component: <Profile />,
         layout: "/admin",
     },
     {
         path: "/table",
         name: "Table List",
         icon: "fe fe-credit-card fe-16",
-        component: Table,
+        component: <Table />,
         layout: "/admin",
     },
     {
         path: "/typography",
         name: "Typography",
         icon: "fe fe-grid fe-16",
-        component: Typology,
+        component: <Typology />,
         layout: "/admin",
     },
     {

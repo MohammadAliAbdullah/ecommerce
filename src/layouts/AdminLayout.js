@@ -6,7 +6,7 @@ import Header from '../components/partials/admin/Header'
 import Dashboard from '../views/admin/Dashboard'
 import routes from '../routes'
 
-const AdminLayout = () => {
+const AdminLayout = (props) => {
     const getRoutes = (routes) => {
         return routes.map((prop, key) => {
             return (
@@ -23,6 +23,7 @@ const AdminLayout = () => {
             <Header />
             <Sidebar routes={routes} />
             <main role="main" className="main-content">
+                {props.render}
                 {/* <Dashboard /> */}
                 <Notification />
             </main>
