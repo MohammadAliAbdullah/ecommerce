@@ -9,6 +9,7 @@ import {
 import Header from './components/partials/admin/Header'
 import Sidebar from './components/partials/admin/Sidebar'
 import routes from './routes'
+import Notification from './components/partials/admin/Notification'
 
 const isAuthenticated = () => true;
 const getUser = () => "user";
@@ -21,16 +22,21 @@ const authLoader = () => {
   }
 };
 
-const CommonHeader = () => <Header/>;
-const CommonSidebar = () => <Sidebar routes={routes}/>;
-const CommonFooter = () => <h1>Common Footer</h1>;
+const CommonHeader = () => <Header />;
+const CommonSidebar = () => <Sidebar routes={routes} />;
+const CommonFooter = () => <Notification />;
 
 const Layout = () => (
   <>
-    <CommonHeader />
-    <CommonSidebar/>
-    <Outlet />
-    <CommonFooter />
+    <div className="wrapper vertical light">
+      <CommonHeader />
+      <CommonSidebar />
+      <main role="main" className="main-content">
+        <Outlet />
+        {/* <Dashboard /> */}
+      </main>
+      <CommonFooter />
+    </div>
   </>
 );
 
