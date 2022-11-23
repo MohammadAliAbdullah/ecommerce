@@ -65,11 +65,11 @@ const Sidebar = ({ routes }) => {
                                         </li>
                                         :
                                         <li className="nav-item w-100">
-                                            <NavLink to={prop.layout + prop.path} className="nav-link">
+                                            <NavLink to={prop.path} className="nav-link">
                                                 <i className={prop.icon} />
                                                 <span className="ml-3 item-text">
                                                     {prop.name}
-                                                </span>
+                                                    </span>
                                             </NavLink>
                                         </li>
                                 );

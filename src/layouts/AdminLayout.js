@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLocation, Route, Router } from "react-router-dom";
+import { createBrowserRouter, redirect, Link, Outlet, useLoaderData, RouterProvider } from "react-router-dom";
 import Notification from '../components/partials/admin/Notification'
 import Sidebar from '../components/partials/admin/Sidebar'
 import Header from '../components/partials/admin/Header'
@@ -23,8 +24,7 @@ const AdminLayout = (props) => {
             <Header />
             <Sidebar routes={routes} />
             <main role="main" className="main-content">
-                {props.render}
-                {/* <Dashboard /> */}
+                <Outlet />
                 <Notification />
             </main>
         </div>
