@@ -45,19 +45,19 @@ const Home = () => {
 
   return (
     <>
-      <div>Header</div>
+      <div><h1>Home This Page</h1></div>
       <Link to="/">Home</Link>
       <br />
       <Link to="/about">About</Link>
       <br />
       <div>Home: {loaderData}</div>
-      <Outlet />
+      {/* <Outlet /> */}
     </>
   );
 };
 
 const About = () => {
-  return <div>About</div>;
+  return <div> <h1>About This Page</h1> <br></br><Link to="/">Home</Link></div>;
 };
 
 const routers = createBrowserRouter([
