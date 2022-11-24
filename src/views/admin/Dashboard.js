@@ -1,4 +1,5 @@
 import React from 'react'
+import routes from "../../rot";
 
 const Dashboard = () => {
     return (
@@ -8,9 +9,25 @@ const Dashboard = () => {
                     <div className="col-12">
                         <h1 className="page-title">Let's start</h1>
                         <h1>You see the Dashboard</h1>
-                    </div> 
-                </div> 
-            </div> 
+                        {
+                            routes.map((prop, i) => {
+                                return (
+                                    <div>
+                                        {prop.children}
+                                        {
+                                            prop.children.map((item, idx) => {
+                                                return (
+                                                    <> {item.path} </>
+                                                );
+                                            })
+                                        }
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

@@ -3,56 +3,6 @@ import Profile from "./views/admin/Profile";
 import Table from "./views/admin/Table";
 import Typology from "./views/admin/Typology";
 
-/*
- [
-            {
-                path: "/",
-                element: <Dashboard />,
-            },
-            {
-                path: "/b",
-                element: <Home />
-            },
-            {
-                path: "/user",
-                name: "User Profile",
-                icon: "fe fe-layers fe-16",
-                element: <Profile />,
-                layout: "/admin",
-            },
-            {
-                path: "/table",
-                name: "Table List",
-                icon: "fe fe-credit-card fe-16",
-                element: <Table />,
-                layout: "/admin",
-            },
-            {
-                path: "/table",
-                name: "Modals",
-                icon: "fe fe-credit-card fe-16",
-                element: 'TableList',
-                layout: "/admin",
-            },
-            {
-                path: "/typography",
-                name: "Tabs & Accordion",
-                icon: "fe fe-grid fe-16",
-                element: 'Typography',
-                layout: "/admin",
-            },
-            {
-                path: "/icons",
-                name: "Progress",
-                icon: "fe fe-pie-chart fe-16",
-                element: 'Icons',
-                layout: "/admin",
-            }
-        ]
-*/
-
-
-
 const dashboardRoutes = [
     {
         path: "/dashboard",
