@@ -38,6 +38,52 @@ const Sidebar = ({ routes }) => {
                         <span>Components</span>
                     </p>
                     <ul className="navbar-nav flex-fill w-100 mb-2">
+                        {
+                            routes.map((prop, key) => {
+                                if (!prop.redirect)
+                                    return (
+                                        <div>
+                                            {
+                                                prop.children.map((item, idx) => {
+                                                    return (
+                                                        (item.items) ?
+                                                            <li className="nav-item dropdown">
+                                                                <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                                                                    <i className={item.icon} />
+                                                                    <span className="ml-3 item-text">{item.name}</span>
+                                                                </a>
+                                                                <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                                                                    {
+                                                                        item.items.map((child, key) => {
+                                                                            return (
+                                                                                <li className="nav-item active">
+                                                                                    <NavLink to={child.path} className="nav-link pl-3">
+                                                                                        <span className="ml-1 item-text">
+                                                                                            {child.name}
+                                                                                        </span>
+                                                                                    </NavLink>
+                                                                                </li>
+                                                                            );
+                                                                        })
+                                                                    }
+                                                                </ul>
+                                                            </li>
+                                                            :
+                                                            <li className="nav-item w-100">
+                                                                <NavLink to={item.path} className="nav-link">
+                                                                    <i className={item.icon} />
+                                                                    <span className="ml-3 item-text">
+                                                                        {item.name}
+                                                                    </span>
+                                                                </NavLink>
+                                                            </li>
+                                                    );
+                                                })
+                                            }
+                                        </div>
+                                    );
+                            })
+                        }
                         {routes.map((prop, key) => {
                             if (!prop.redirect)
                                 return (
@@ -69,7 +115,7 @@ const Sidebar = ({ routes }) => {
                                                 <i className={prop.icon} />
                                                 <span className="ml-3 item-text">
                                                     {prop.name}
-                                                    </span>
+                                                </span>
                                             </NavLink>
                                         </li>
                                 );
