@@ -1,7 +1,10 @@
 import React from 'react'
-import routes from "../../rot";
+import adminMenus from '../../utils/adminMenus';
 
 const Dashboard = () => {
+    const children = {
+        backgroundColor: '#f7e5e4',
+    }
     return (
         <div>
             <div className="container-fluid">
@@ -10,14 +13,17 @@ const Dashboard = () => {
                         <h1 className="page-title">Let's start</h1>
                         <h1>You see the Dashboard</h1>
                         {
-                            routes.map((prop, i) => {
+                            adminMenus.map((prop, i) => {
                                 return (
                                     <div>
-                                        {prop.children}
+                                        {prop.element}
                                         {
                                             prop.children.map((item, idx) => {
                                                 return (
-                                                    <> {item.path} </>
+                                                    <div style={children}>
+                                                        <li> {item.path} </li>
+                                                        <li> {item.name} </li>
+                                                    </div>
                                                 );
                                             })
                                         }

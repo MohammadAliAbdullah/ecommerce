@@ -5,7 +5,7 @@ import Notification from '../components/partials/admin/Notification'
 import Sidebar from '../components/partials/admin/Sidebar'
 import Header from '../components/partials/admin/Header'
 import Dashboard from '../views/admin/Dashboard'
-import routes from '../routes'
+import routes from '../utils/adminMenus';
 
 const AdminLayout = (props) => {
     const getRoutes = (routes) => {

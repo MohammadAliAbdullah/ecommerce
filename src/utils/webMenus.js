@@ -1,4 +1,4 @@
-const adminMenus = [
+const webMenus = [
     {
         element: "<AdminLayout />",
         children: [
@@ -113,4 +113,4 @@ const adminMenus = [
     }
 ];
 
-export default adminMenus;
+export default webMenus;
