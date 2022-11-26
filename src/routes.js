@@ -1,8 +1,32 @@
 import AdminLayout from './layouts/AdminLayout';
+import WebLayout from './layouts/WebLayout';
 import Dashboard from "./views/admin/Dashboard";
 import Profile from "./views/admin/Profile";
 import Table from "./views/admin/Table";
 import Typology from "./views/admin/Typology";
+
+const CommonHeader = () => {
+    return (
+        <div>
+            <h1>Page 1</h1>
+        </div>
+    )
+}
+const CommonSidebar = () => {
+    return (
+        <div>
+            <h1>Page 2</h1>
+        </div>
+    )
+}
+
+const CommonFooter = () => {
+    return (
+        <div>
+            <h1>Page 3</h1>
+        </div>
+    )
+}
 
 const dashboardRoutes = [
     {
@@ -116,7 +140,32 @@ const dashboardRoutes = [
                 layout: "/admin",
             },
         ]
+    },
+    {
+        element: <WebLayout />,
+        children: [
+            {
+                path: "/page1",
+                name: "Elements",
+                icon: "fe fe-box fe-1",
+                element: <CommonHeader />,
+                layout: "/web"
+            },
+            {
+                path: "/page2",
+                name: "Elements",
+                icon: "fe fe-box fe-1",
+                element: <CommonSidebar />,
+                layout: "/web"
+            },
+            {
+                path: "/page3",
+                name: "Elements",
+                icon: "fe fe-box fe-1",
+                element: <CommonFooter />,
+                layout: "/web"
+            }
+        ]
     }
-];
-
+]
 export default dashboardRoutes;

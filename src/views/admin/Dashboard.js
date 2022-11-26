@@ -16,7 +16,6 @@ const Dashboard = () => {
                             adminMenus.map((prop, i) => {
                                 return (
                                     <div>
-                                        {/* {prop.element} */}
                                         {
                                             prop.children.map((item, idx) => {
                                                 return (

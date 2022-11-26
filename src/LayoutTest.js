@@ -56,8 +56,13 @@ const Home = () => {
   );
 };
 
+
 const About = () => {
-  return <div> <h1>About This Page</h1> <br></br><Link to="/">Home</Link></div>;
+  return <div>
+    <h1>About This Page</h1>
+    <br></br>
+    <Link to="/">Home</Link>
+  </div>;
 };
 
 const routers = createBrowserRouter([

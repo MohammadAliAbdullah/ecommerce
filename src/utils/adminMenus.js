@@ -110,6 +110,26 @@ const adminMenus = [
                 element: 'Notifications',
                 layout: "/admin",
             },
+            {
+                path: "/page1",
+                name: "Elements1",
+                icon: "fe fe-box fe-1",
+                element: "<CommonHeader />",
+                layout: "/admin"
+            },
+            {
+                path: "/page2",
+                name: "Elements2",
+                icon: "fe fe-box fe-1",
+                element: "<CommonSidebar />",
+                layout: "/admin"
+            },
+            {
+                path: "/page3",
+                name: "Elements3",
+                icon: "fe fe-box fe-1",
+                element: "<CommonFooter />",
+            }
         ]
     }
 ];
