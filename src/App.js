@@ -18,7 +18,7 @@ import Dashboard from './views/admin/Dashboard'
 import Profile from "./views/admin/Profile";
 import Table from "./views/admin/Table";
 import Typology from "./views/admin/Typology";
-import routes from "./new_routes";
+import routes from "./routes";
 
 function App() {
   const routers = createBrowserRouter(routes);

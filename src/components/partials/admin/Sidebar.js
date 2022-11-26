@@ -44,7 +44,7 @@ const Sidebar = ({ routes }) => {
                                     return (
                                         <div>
                                             {
-                                                prop.children.map((item, idx) => {
+                                                (prop.children) ? prop.children.map((item, idx) => {
                                                     return (
                                                         (item.items) ?
                                                             <li className="nav-item dropdown">
@@ -54,7 +54,7 @@ const Sidebar = ({ routes }) => {
                                                                 </a>
                                                                 <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
                                                                     {
-                                                                        item.items.map((child, key) => {
+                                                                        (item.items) ? item.items.map((child, key) => {
                                                                             return (
                                                                                 <li className="nav-item active">
                                                                                     <NavLink to={child.path} className="nav-link pl-3">
@@ -65,6 +65,8 @@ const Sidebar = ({ routes }) => {
                                                                                 </li>
                                                                             );
                                                                         })
+                                                                            :
+                                                                            null
                                                                     }
                                                                 </ul>
                                                             </li>
@@ -79,12 +81,15 @@ const Sidebar = ({ routes }) => {
                                                             </li>
                                                     );
                                                 })
+                                                    :
+                                                    null
                                             }
                                         </div>
                                     );
                             })
                         }
-                        {routes.map((prop, key) => {
+
+                        {/* {routes.map((prop, key) => {
                             if (!prop.redirect)
                                 return (
                                     (prop.childs) ?
@@ -120,7 +125,7 @@ const Sidebar = ({ routes }) => {
                                         </li>
                                 );
                             return null;
-                        })}
+                        })} */}
                     </ul>
                 </nav>
             </aside>
