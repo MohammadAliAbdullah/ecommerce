@@ -1,7 +1,7 @@
 import React from 'react'
-import { NavLink } from "react-router-dom"; 
+import { NavLink } from "react-router-dom";
 
-const MenuTwo = () => {
+const Menu = () => {
     return (
         <div>
             <div className="container-fluid">
@@ -69,4 +69,4 @@ const MenuTwo = () => {
     )
 }
 
-export default MenuTwo
+export default Menu

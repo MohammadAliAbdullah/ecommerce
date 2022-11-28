@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from "react-router-dom"; 
 
 const Menu = () => {
     return (
@@ -42,9 +43,9 @@ const Menu = () => {
                             </button>
                             <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                                 <div className="navbar-nav mr-auto py-0">
-                                    <a href="index.html" className="nav-item nav-link active">Home</a>
-                                    <a href="shop.html" className="nav-item nav-link">Shop</a>
-                                    <a href="detail.html" className="nav-item nav-link">Shop Detail</a>
+                                    <NavLink to="/" className="nav-item nav-link active">Home</NavLink>
+                                    <NavLink to="/detail" className="nav-item nav-link">Shop</NavLink>
+                                    <NavLink to="/cart" className="nav-item nav-link">Shop Detail</NavLink>
                                     <div className="nav-item dropdown">
                                         <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                         <div className="dropdown-menu rounded-0 m-0">
@@ -52,7 +53,7 @@ const Menu = () => {
                                             <a href="checkout.html" className="dropdown-item">Checkout</a>
                                         </div>
                                     </div>
-                                    <a href="contact.html" className="nav-item nav-link">Contact</a>
+                                    <NavLink to="/contact" className="nav-item nav-link">Contact</NavLink>
                                 </div>
                                 <div className="navbar-nav ml-auto py-0">
                                     <a href className="nav-item nav-link">Login</a>

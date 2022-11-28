@@ -1,18 +1,38 @@
-import React from 'react'
-import { createBrowserRouter, redirect, Link, Outlet, useLoaderData, RouterProvider } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { createBrowserRouter, redirect, Link, Outlet, useLoaderData, RouterProvider, useLocation } from "react-router-dom";
+import TopHeader from '../components/partials/web/TopHeader';
+import Header from '../components/partials/web/Header';
+import Footer from '../components/partials/web/Footer';
+import HomeMenu from '../components/partials/web/HomeMenu';
+import Menu from '../components/partials/web/Menu';
+import Search from '../components/partials/web/Search';
+import Breadcrumb from '../components/partials/web/Breadcrumb';
+import Home from '../views/web/Home';
+
 
 const WebLayout = () => {
+    // console.log('current URL 👉️', window.location.href);
+    // console.log('current Pathname 👉️', window.location.pathname);
+
+    // 👇️ with React router
+    const location = useLocation();
+    // console.log('hash', location.hash);
+    // console.log('pathname', location.pathname);
+    // console.log('search', location.search);
+    const { pathName } = useLocation();
+
+    useEffect(() => {
+        window.location.pathname
+    }, [pathName]);
+
     return (
         <div>
-            <h1> Common Header</h1>
-            <nav>
-                <NavLink to="/page1" className="nav-link"> Page 1 </NavLink>
-                <NavLink to="/page2" className="nav-link"> Page 2 </NavLink>
-                <NavLink to="/page3" className="nav-link"> Page 3 </NavLink>
-            </nav>
+            {/* <h2>Current URL 👉️ { window.location.href }</h2>
+            <h2>Current Pathname 👉️ { window.location.pathname }</h2> */}
+            <Header />
+            {window.location.pathname == '/' ? <HomeMenu /> : <Menu />}
             <Outlet />
-            <h1> Common Footer</h1>
+            <Footer />
         </div>
     )
 }

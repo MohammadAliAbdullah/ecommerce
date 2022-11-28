@@ -4,36 +4,20 @@ import Dashboard from "./views/admin/Dashboard";
 import Profile from "./views/admin/Profile";
 import Table from "./views/admin/Table";
 import Typology from "./views/admin/Typology";
+// web 
+import Home from './views/web/Home';
+import Checkout from './views/web/Checkout';
+import Cart from './views/web/Cart';
+import Details from './views/web/Details';
+import Contact from './views/web/Contact';
 
-const CommonHeader = () => {
-    return (
-        <div>
-            <h1>Page 1</h1>
-        </div>
-    )
-}
-const CommonSidebar = () => {
-    return (
-        <div>
-            <h1>Page 2</h1>
-        </div>
-    )
-}
-
-const CommonFooter = () => {
-    return (
-        <div>
-            <h1>Page 3</h1>
-        </div>
-    )
-}
 
 const dashboardRoutes = [
     {
         element: <AdminLayout />,
         children: [
             {
-                path: "/dashboard",
+                path: "/admin",
                 name: "Elements",
                 icon: "fe fe-box fe-1",
                 element: <Dashboard />,
@@ -145,24 +129,38 @@ const dashboardRoutes = [
         element: <WebLayout />,
         children: [
             {
-                path: "/page1",
+                path: "/",
                 name: "Elements",
                 icon: "fe fe-box fe-1",
-                element: <CommonHeader />,
+                element: <Home />,
                 layout: "/web"
             },
             {
-                path: "/page2",
+                path: "/checkout",
                 name: "Elements",
                 icon: "fe fe-box fe-1",
-                element: <CommonSidebar />,
+                element: <Checkout />,
                 layout: "/web"
             },
             {
-                path: "/page3",
+                path: "/cart",
                 name: "Elements",
                 icon: "fe fe-box fe-1",
-                element: <CommonFooter />,
+                element: <Cart />,
+                layout: "/web"
+            },
+            {
+                path: "/detail",
+                name: "Elements",
+                icon: "fe fe-box fe-1",
+                element: <Details />,
+                layout: "/web"
+            },
+            {
+                path: "/contact",
+                name: "Elements",
+                icon: "fe fe-box fe-1",
+                element: <Contact />,
                 layout: "/web"
             }
         ]
