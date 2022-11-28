@@ -22,7 +22,7 @@ const WebLayout = () => {
     const { pathName } = useLocation();
 
     useEffect(() => {
-        window.location.pathname
+        // window.location.pathname
     }, [pathName]);
 
     return (
