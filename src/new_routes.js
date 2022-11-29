@@ -1,4 +1,3 @@
-
 import Dashboard from "./views/admin/Dashboard";
 import Profile from "./views/admin/Profile";
 import Table from "./views/admin/Table";
