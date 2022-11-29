@@ -1,4 +1,3 @@
-import './App.css';
 import React from "react";
 import { createBrowserRouter, redirect, Link, Outlet, useLoaderData, RouterProvider } from "react-router-dom";
 import AdminLayout from './layouts/AdminLayout';
