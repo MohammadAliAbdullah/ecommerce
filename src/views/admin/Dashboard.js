@@ -1,5 +1,5 @@
 import React from 'react'
-import adminMenus from '../../utils/adminMenus';
+import adminMenus from '../../config/adminMenus';
 
 const Dashboard = () => {
     const children = {
