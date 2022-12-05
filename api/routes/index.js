@@ -13,5 +13,6 @@ module.exports = (app) => {
     router.post("/confirm-restore-password", auth.confirmRestorePassword);
     // user 
     router.get("/users", user.users);
+    // router.get("/user", user.getUsers);
     app.use('/api/auth', router);
 }
