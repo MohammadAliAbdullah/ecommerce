@@ -20,8 +20,8 @@ const User = () => {
 
     return (
         <div>
-            <table className="table is-striped is-fullwidth mt-2">
-                <thead>
+            <table className="table table-bordered">
+                <thead className="thead-dark">
                     <tr>
                         <th>No</th>
                         <th>Name</th>
@@ -38,11 +38,12 @@ const User = () => {
                             <td>{user.firstname}</td>
                             <td>{user.lastname}</td>
                             <td>{user.email}</td>
-                            <td>{user.activeStatus ? 'Active' : 'Inactive'}</td>
+                            <td>{user.activeStatus ? <span className="badge badge-info">Active</span> : <span className="badge badge-secondary">Inactive</span>}</td>
                             <td>
                                 <button to={`edit/${user._id}`} className="btn btn-success btn-sm">
                                     Edit
                                 </button>
+                                |
                                 <button className="btn btn-danger btn-sm">
                                     Delete
                                 </button>
