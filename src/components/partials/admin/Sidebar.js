@@ -48,11 +48,11 @@ const Sidebar = ({ routes }) => {
                                                     return (
                                                         (item.items) ?
                                                             <li className="nav-item dropdown">
-                                                                <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                                                                <a href={'#dropdown'+idx+1} data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                                                                     <i className={item.icon} />
                                                                     <span className="ml-3 item-text">{item.name}</span>
                                                                 </a>
-                                                                <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
+                                                                <ul class="collapse list-unstyled pl-4 w-100" id={'dropdown'+idx+1}>
                                                                     {
                                                                         (item.items) ? item.items.map((child, key) => {
                                                                             return (

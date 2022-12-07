@@ -44,7 +44,7 @@ const adminMenus = [
                 ]
             },
             {
-                path: "/user",
+                path: "/ur",
                 name: "Product",
                 icon: "fe fe-layers fe-16",
                 layout: "/admin",
