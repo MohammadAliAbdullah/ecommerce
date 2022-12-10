@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+
 
 const Register = () => {
+    const [firstName, SetFirstName] = useState("");
+    const [lastName, SetLastName] = useState("");
+    const [userName, SetUserName] = useState("");
+    const [email, SetEmail] = useState("");
+    const [password, SetPassword] = useState("");
+    const [confirmPassword, SetConfirmPassword] = useState("");
+    // success
+    const [success, SetSuccess] = useState(false);
+    // faill 
+    const [error, SetError] = useState(false);
+    // loading 
+    const [loading, SetLoading] = useState(false);
+
     return (
         <div class="wrapper vh-100">
             <div class="row align-items-center h-100">
@@ -17,30 +31,35 @@ const Register = () => {
                         </a>
                         <h2 className="my-3">Register</h2>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="inputEmail4">Email</label>
-                        <input type="email" className="form-control" id="inputEmail4" />
-                    </div>
+
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label htmlFor="firstname">Firstname</label>
-                            <input type="text" id="firstname" className="form-control" />
+                            <input onChange={(e) => SetFirstName(e.target.value)} type="text" id="firstname" className="form-control" />
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="lastname">Lastname</label>
-                            <input type="text" id="lastname" className="form-control" />
+                            <input onChange={(e) => SetLastName(e.target.value)} type="text" id="lastname" className="form-control" />
                         </div>
                     </div>
-                    <hr className="my-4" />
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="email" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="userName">User Name</label>
+                        <input onChange={(e) => setName(e.target.value)} type="text" className="form-control" id="userName" />
+                    </div>
+                    {/* <hr className="my-4" /> */}
                     <div className="row mb-4">
                         <div className="col-md-6">
                             <div className="form-group">
-                                <label htmlFor="inputPassword5">New Password</label>
-                                <input type="password" className="form-control" id="inputPassword5" />
+                                <label htmlFor="password">New Password</label>
+                                <input onChange={(e) => SetPassword(e.target.value)} type="password" className="form-control" id="password" />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="inputPassword6">Confirm Password</label>
-                                <input type="password" className="form-control" id="inputPassword6" />
+                                <input onChange={(e) => SetConfirmPassword(e.target.value)} type="password" className="form-control" id="inputPassword6" />
                             </div>
                         </div>
                         <div className="col-md-6">
