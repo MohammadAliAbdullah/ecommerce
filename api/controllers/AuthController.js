@@ -15,8 +15,8 @@ exports.signup = (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: password.hashPassword(req.body.password),
-        role: req.body.role,
-        activeStatus: req.body.activeStatus,
+        role: '635972b1444613d66a0f98c0',
+        activeStatus: true,
         createdBy: req.body.createdBy,
     });
     // insert data

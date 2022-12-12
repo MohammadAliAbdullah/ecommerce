@@ -1,38 +1,47 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-
 const Register = () => {
-    const [firstname, SetFirstName] = useState("");
-    const [lastname, SetLastName] = useState("");
-    const [username, SetUserName] = useState("");
-    const [email, SetEmail] = useState("");
-    const [password, SetPassword] = useState("");
-    const [confirmPassword, SetConfirmPassword] = useState("");
-    // success
-    const [success, SetSuccess] = useState(false);
-    // faill 
-    const [error, SetError] = useState(false);
-    // loading 
-    const [loading, SetLoading] = useState(false);
+    const [firstname, setFirstName] = useState("");
+    const [lastname, setLastName] = useState("");
+    const [username, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [success, setSuccess] = useState("");
+    const [errMsg, setErrMsg] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [inputs, setInputs] = useState([]);
 
+    const onChangeHandler = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }));
+        // setInputs((prev) => { return { ...prev, [name]: value } });
+        // password validation 
+        if (name == 'confirmPassword') {
+            console.log(inputs.password.length>8);
+            console.log(value);
+            if (inputs.password != value) {
+                setErrMsg('Password & Confirm Password Not Match');
+            } else {
+                setErrMsg('');
+            }
+
+        }
+
+    }
     const submitHandler = async (e) => {
         e.preventDefault();
-        const data = {
-            firstname,
-            lastname,
-            username,
-            email,
-            password,
-        }
-        console.log(data);
+        const formData = inputs;
         try {
-            const response = await axios.post("http://localhost:1600/api/auth/signup", data);
-            console.log(response);
+            const response = await axios.post("http://localhost:1600/api/auth/signup", formData);
+            setSuccess((response.data) ? 'Registration Successfully' : '');
+            setErrMsg('');
         } catch (error) {
-
+            setErrMsg(error.message);
+            setSuccess('');
         }
-
     }
     return (
         <div class="wrapper vh-100">
@@ -50,35 +59,48 @@ const Register = () => {
                         </a>
                         <h2 className="my-3">Register</h2>
                     </div>
-
+                    {errMsg != '' && <div className="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{errMsg}!</strong>
+                        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    }
+                    {success != '' && <div className="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{success}!</strong>
+                        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    }
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label htmlFor="firstname">Firstname</label>
-                            <input onChange={(e) => SetFirstName(e.target.value)} type="text" id="firstname" className="form-control" name="firstname" />
+                            <input onChange={onChangeHandler} type="text" id="firstname" className="form-control" name="firstname" />
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="lastname">Lastname</label>
-                            <input onChange={(e) => SetLastName(e.target.value)} type="text" id="lastname" className="form-control" name="lastname" />
+                            <input onChange={onChangeHandler} type="text" id="lastname" className="form-control" name="lastname" />
                         </div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input onChange={(e) => SetEmail(e.target.value)} type="email" className="form-control" id="email" name="email" />
+                        <input onChange={onChangeHandler} type="email" className="form-control" id="email" name="email" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="userName">User Name</label>
-                        <input onChange={(e) => SetUserName(e.target.value)} type="text" className="form-control" id="userName" name="username" />
+                        <input onChange={onChangeHandler} type="text" className="form-control" id="userName" name="username" />
                     </div>
                     {/* <hr className="my-4" /> */}
                     <div className="row mb-4">
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label htmlFor="password">New Password</label>
-                                <input onChange={(e) => SetPassword(e.target.value)} type="password" className="form-control" id="password" name="password" />
+                                <input onChange={onChangeHandler} type="password" className="form-control" id="password" name="password" />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="inputPassword6">Confirm Password</label>
-                                <input onChange={(e) => SetConfirmPassword(e.target.value)} type="password" className="form-control" id="inputPassword6" />
+                                <label htmlFor="confirmPassword">Confirm Password</label>
+                                <input onChange={onChangeHandler} name="confirmPassword" type="password" className="form-control" id="confirmPassword" />
                             </div>
                         </div>
                         <div className="col-md-6">
@@ -92,7 +114,7 @@ const Register = () => {
                             </ul>
                         </div>
                     </div>
-                    <button className="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                    <button className="btn btn-lg btn-primary btn-block" type="submit" disabled>Sign up</button>
                     <p className="mt-5 mb-3 text-muted text-center">© 2020</p>
                 </form>
             </div>
