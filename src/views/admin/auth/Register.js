@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
+import isEmailValid from "../../../utils/Validation";
 const Register = () => {
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
@@ -18,18 +18,15 @@ const Register = () => {
         const value = event.target.value;
         setInputs(values => ({ ...values, [name]: value }));
         // setInputs((prev) => { return { ...prev, [name]: value } });
+        // email validation 
+        isEmailValid(inputs.email) ? setErrMsg('') : setErrMsg('Email Is Not Valid');
         // password validation 
-        if (name == 'confirmPassword') {
-            console.log(inputs.password.length>8);
-            console.log(value);
-            if (inputs.password != value) {
-                setErrMsg('Password & Confirm Password Not Match');
-            } else {
-                setErrMsg('');
-            }
-
+        if (name == 'password') {
+            (inputs.password.length < 7) ? setErrMsg('Password Minimum 8 character') : setErrMsg('');
         }
-
+        if (name == 'confirmPassword') {
+            (inputs.password != value) ? setErrMsg('Password & Confirm Password Not Match') : setErrMsg('');
+        }
     }
     const submitHandler = async (e) => {
         e.preventDefault();
