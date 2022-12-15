@@ -1,37 +1,71 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import isEmailValid from "../../../utils/Validation";
 
 const Login = () => {
+    const [errMsg, setErrMsg] = useState("");
+    const [success, setSuccess] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [inputs, setInputs] = useState([]);
+
+    const onChangeHandler = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }));
+        // email validation 
+        if (name == 'username') {
+            isEmailValid(inputs.username) ? setErrMsg('') : setErrMsg('Email Is Not Valid');
+        }
+    }
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        const formData = inputs;
+   
+        try {
+            const response = await axios.post("http://localhost:1600/api/auth/signin", formData);
+            console.log(response.data);
+            setSuccess((response.data) ? 'Login Successfully' : '');
+            setErrMsg('');
+        } catch (error) {
+            setErrMsg(error.message);
+            setSuccess('');
+        }
+    }
+
     return (
-        // <div className="wrapper vh-100">
-        //     <div className="row align-items-center h-100">
-                <form className="col-lg-3 col-md-4 col-10 mx-auto text-center">
-                    <a className="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-                        <svg version="1.1" id="logo" className="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xmlSpace="preserve">
-                            <g>
-                                <polygon className="st0" points="78,105 15,105 24,87 87,87 	" />
-                                <polygon className="st0" points="96,69 33,69 42,51 105,51 	" />
-                                <polygon className="st0" points="78,33 15,33 24,15 87,15 	" />
-                            </g>
-                        </svg>
-                    </a>
-                    <h1 className="h6 mb-3">Sign in</h1>
-                    <div className="form-group">
-                        <label htmlFor="inputEmail" className="sr-only">Email address</label>
-                        <input type="email" id="inputEmail" className="form-control form-control-lg" placeholder="Email address" required autofocus />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="inputPassword" className="sr-only">Password</label>
-                        <input type="password" id="inputPassword" className="form-control form-control-lg" placeholder="Password" required />
-                    </div>
-                    <div className="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" defaultValue="remember-me" /> Stay logged in </label>
-                    </div>
-                    <button className="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
-                    <p className="mt-5 mb-3 text-muted">© 2020</p>
-                </form>
-        //     </div>
-        // </div>
+        <form className="col-lg-3 col-md-4 col-10 mx-auto text-center" onSubmit={submitHandler}>
+            <a className="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+                <svg version="1.1" id="logo" className="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xmlSpace="preserve">
+                    <g>
+                        <polygon className="st0" points="78,105 15,105 24,87 87,87 	" />
+                        <polygon className="st0" points="96,69 33,69 42,51 105,51 	" />
+                        <polygon className="st0" points="78,33 15,33 24,15 87,15 	" />
+                    </g>
+                </svg>
+            </a>
+            <h1 className="h6 mb-3">Sign in</h1>
+            {errMsg != '' && <div className="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{errMsg}!</strong>
+                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            }
+            <div className="form-group">
+                <label htmlFor="inputEmail" className="sr-only">Email address</label>
+                <input type="text" name="username" id="username" onChange={onChangeHandler} className="form-control form-control-lg" placeholder="User Name or Email address" required autofocus />
+            </div>
+            <div className="form-group">
+                <label htmlFor="inputPassword" className="sr-only">Password</label>
+                <input type="password" name="password" id="password" onChange={onChangeHandler} className="form-control form-control-lg" placeholder="Password" required />
+            </div>
+            <div className="checkbox mb-3">
+                <label>
+                    <input type="checkbox" defaultValue="remember-me" /> Stay logged in </label>
+            </div>
+            <button className="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
+            <p className="mt-5 mb-3 text-muted">© 2020</p>
+        </form>
     )
 }
 

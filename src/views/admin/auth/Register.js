@@ -19,7 +19,9 @@ const Register = () => {
         setInputs(values => ({ ...values, [name]: value }));
         // setInputs((prev) => { return { ...prev, [name]: value } });
         // email validation 
-        isEmailValid(inputs.email) ? setErrMsg('') : setErrMsg('Email Is Not Valid');
+        if (name == 'email') {
+            isEmailValid(inputs.email) ? setErrMsg('') : setErrMsg('Email Is Not Valid');
+        }
         // password validation 
         if (name == 'password') {
             (inputs.password.length < 7) ? setErrMsg('Password Minimum 8 character') : setErrMsg('');
@@ -111,7 +113,7 @@ const Register = () => {
                             </ul>
                         </div>
                     </div>
-                    <button className="btn btn-lg btn-primary btn-block" type="submit" disabled>Sign up</button>
+                    <button className="btn btn-lg btn-primary btn-block" type="submit" >Sign up</button>
                     <p className="mt-5 mb-3 text-muted text-center">© 2020</p>
                 </form>
             </div>

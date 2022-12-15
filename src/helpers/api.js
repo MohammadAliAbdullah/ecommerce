@@ -74,7 +74,7 @@ export const api = (requestType, url, payload) => {
       .then(response => {
         resolve(response.data);
       })
-      .catch(error => {
+      .catch(error => { 
         reject(error);
       });
   });
