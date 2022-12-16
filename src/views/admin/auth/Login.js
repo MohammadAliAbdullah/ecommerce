@@ -13,9 +13,9 @@ const Login = () => {
         const value = event.target.value;
         setInputs(values => ({ ...values, [name]: value }));
         // email validation 
-        if (name == 'username') {
-            isEmailValid(inputs.username) ? setErrMsg('') : setErrMsg('Email Is Not Valid');
-        }
+        // if (name == 'username') {
+        //     isEmailValid(inputs.username) ? setErrMsg('') : setErrMsg('Email Is Not Valid');
+        // }
     }
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -27,7 +27,7 @@ const Login = () => {
             setSuccess((response.data) ? 'Login Successfully' : '');
             setErrMsg('');
         } catch (error) {
-            setErrMsg(error.message);
+            setErrMsg(error);
             setSuccess('');
         }
     }

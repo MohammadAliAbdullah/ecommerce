@@ -40,20 +40,35 @@ exports.signup = (req, res) => {
 }
 
 exports.signin = (req, res) => {
+    //     res.status(500).send({ "message": 'err' });
+    // return false;
     const isEmail = validEmail.isEmailValid(req.body.username);
     const find = isEmail ? { email: req.body.username } : { username: req.body.username };
     // res.send(req.body);
+
+    User.findOne(find)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.send('data');
+            // res.send({
+            //     message: err.message || "Some error occurred while retrieving tutorials."
+            // });
+        });
+return false
+
     User.findOne(find)
         .populate("role", "-__v")
         .exec((err, user) => {
 
-            if (err) {
-                res.status(500).send({ message: err });
-                return;
-            }
+            res.send({ message: user });
             if (!user) {
                 return res.status(404).send({ message: "User Not found." });
             }
+            res.json({user});
+            return false;
+
             try {
                 // match password 
                 const valid = password.checkPassword(req.body.password, user.password);
