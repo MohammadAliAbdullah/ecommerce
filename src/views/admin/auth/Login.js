@@ -1,31 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import isEmailValid from "../../../utils/Validation";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState("");
     const [loading, setLoading] = useState(false);
     const [inputs, setInputs] = useState([]);
+    let navigate = useNavigate();
 
     const onChangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({ ...values, [name]: value }));
-        // email validation 
-        // if (name == 'username') {
-        //     isEmailValid(inputs.username) ? setErrMsg('') : setErrMsg('Email Is Not Valid');
-        // }
     }
     const submitHandler = async (e) => {
         e.preventDefault();
         const formData = inputs;
-   
+
         try {
             const response = await axios.post("http://localhost:1600/api/auth/signin", formData);
-            console.log(response.data);
-            setSuccess((response.data) ? 'Login Successfully' : '');
-            setErrMsg('');
+
+            if (response.data.status === 200) {
+                // setItem(response.data);
+                localStorage.setItem('items', {a: 'aa', b:'bb'});
+                setErrMsg('');
+                return navigate('/admin');
+            } else {
+                console.log(response.data.message);
+                setErrMsg(response.data.message);
+            }
+            // setSuccess((response.data) ? 'Login Successfully' : '');
+            // setErrMsg('');
         } catch (error) {
             setErrMsg(error);
             setSuccess('');
@@ -46,9 +52,6 @@ const Login = () => {
             <h1 className="h6 mb-3">Sign in</h1>
             {errMsg != '' && <div className="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>{errMsg}!</strong>
-                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
             </div>
             }
             <div className="form-group">

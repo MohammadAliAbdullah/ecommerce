@@ -44,36 +44,33 @@ exports.signin = (req, res) => {
     // return false;
     const isEmail = validEmail.isEmailValid(req.body.username);
     const find = isEmail ? { email: req.body.username } : { username: req.body.username };
-    // res.send(req.body);
 
-    User.findOne(find)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.send('data');
-            // res.send({
-            //     message: err.message || "Some error occurred while retrieving tutorials."
-            // });
-        });
-return false
+    // User.findOne(find, (err, user) => {
+    //     if (user) {
+    //         res.send(user);
+    //     } else {
+    //         return res.send({ message: "This Email or User Name Is not regestered!" });
+    //     }
+    // })
+
+    // return false
 
     User.findOne(find)
         .populate("role", "-__v")
         .exec((err, user) => {
-
-            res.send({ message: user });
-            if (!user) {
-                return res.status(404).send({ message: "User Not found." });
+            if (err) {
+                res.send({ status: 401, message: err });
+                return;
             }
-            res.json({user});
-            return false;
-
+            if (!user) {
+                return res.send({ status: 401, message: "This Email or User Name Is not regestered!." });
+            }
             try {
                 // match password 
                 const valid = password.checkPassword(req.body.password, user.password);
                 if (!valid) {
-                    return res.status(401).send({
+                    return res.send({
+                        status: 401,
                         accessToken: null,
                         message: "Invalid Password!"
                     });
@@ -82,6 +79,7 @@ return false
                 const refreshTokenHash = TokenService.createRefreshToken(user);
                 const refreshToken = TokenService.addRefreshTokenUser(user, refreshTokenHash);
                 res.json({
+                    status: 200,
                     user: {
                         id: user.id,
                         name: user.name,
@@ -92,12 +90,9 @@ return false
                     refreshToken
                 });
             } catch (err) {
-                res.status(401).send({
-                    message: err.message || "Some error occurred while creating the User."
-                });
+                res.send({ message: err.message || "Some error occurred while creating the User." });
             }
         });
-
 }
 
 exports.logout = (req, res, next) => {
