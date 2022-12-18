@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { setAuthUserData } from "../../../helpers/auth";
 
 const Login = () => {
     const [errMsg, setErrMsg] = useState("");
@@ -23,7 +24,8 @@ const Login = () => {
 
             if (response.data.status === 200) {
                 // setItem(response.data);
-                localStorage.setItem('items', {a: 'aa', b:'bb'});
+                localStorage.setItem('items', JSON.stringify(response.data));
+                setAuthUserData(response.data);
                 setErrMsg('');
                 return navigate('/admin');
             } else {

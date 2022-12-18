@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import adminMenus from '../../config/adminMenus';
+import { auth } from '../../helpers/auth';
 
 const Dashboard = () => {
     const children = {
         backgroundColor: '#f7e5e4',
     }
-    // const getLocalStroge = () => {
-    //     localStorage.getItem('items');
-    // }
-    console.log(JSON. stringify(localStorage.getItem('items'))); 
-    
+
+    useEffect(() => {
+        console.log(auth().email); 
+    }, [auth])
+
     return (
         <div>
             <div className="container-fluid">

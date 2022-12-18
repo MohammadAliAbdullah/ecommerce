@@ -13,6 +13,10 @@ export const removeAuthUserData = () => {
   localStorage.removeItem("authUserData");
 };
 
+export const auth = () => {
+  return getAuthUserData().user;
+};
+
 export const checkTokenExpire = token => {
   try {
     const { exp } = decode(token);
