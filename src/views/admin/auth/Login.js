@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { setAuthUserData } from "../../../helpers/auth";
+import { api } from "../../../helpers/api";
 
 const Login = () => {
     const [errMsg, setErrMsg] = useState("");
@@ -20,17 +21,17 @@ const Login = () => {
         const formData = inputs;
 
         try {
-            const response = await axios.post("http://localhost:1600/api/auth/signin", formData);
-
-            if (response.data.status === 200) {
+            const data = await api('post', 'auth/signin', formData);
+            console.log(data);
+            if (data.status === 200) {
                 // setItem(response.data);
-                localStorage.setItem('items', JSON.stringify(response.data));
-                setAuthUserData(response.data);
+                localStorage.setItem('items', JSON.stringify(data));
+                setAuthUserData(data);
                 setErrMsg('');
                 return navigate('/admin');
             } else {
-                console.log(response.data.message);
-                setErrMsg(response.data.message);
+                console.log(data.message);
+                setErrMsg(data.message);
             }
             // setSuccess((response.data) ? 'Login Successfully' : '');
             // setErrMsg('');

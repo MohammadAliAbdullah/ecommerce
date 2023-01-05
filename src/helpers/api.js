@@ -12,61 +12,75 @@ export const axiosInstace = axios.create({
   timeout: 20000
 });
 
-export const initAuthInterceptor = (store, errorAction) => {
-  axiosInstace.interceptors.request.use(response => {
-    const userAuth = getAuthUserData();
+// export const initAuthInterceptor = (store, errorAction) => {
+//   axiosInstace.interceptors.request.use(response => {
+//     response.headers['abdullah'] = 'Authorization';
+//     const userAuth = getAuthUserData();
+//     alert(userAuth);
+//     if (userAuth) {
+//       response.headers.Authorization = `Bearer ${userAuth.accessToken}`;
+//     } else {
+//       delete response.headers.Authorization;
+//     }
 
-    if (userAuth) {
-      response.headers.Authorization = `Bearer ${userAuth.accessToken}`;
-    } else {
-      delete response.headers.Authorization;
-    }
+//     return response;
+//   });
 
-    return response;
-  });
+//   axiosInstace.interceptors.response.use(null, async error => {
+//     const httpCode = 401;
+//     const originalRequest = error.config;
 
-  axiosInstace.interceptors.response.use(null, async error => {
-    const httpCode = 401;
-    const originalRequest = error.config;
+//     if (error.response.status === httpCode && !originalRequest._retry) {
+//       originalRequest._retry = true;
 
-    if (error.response.status === httpCode && !originalRequest._retry) {
-      originalRequest._retry = true;
+//       const userAuth = getAuthUserData();
+//       if (userAuth) {
+//         const refreshToken = userAuth.refreshToken;
+//         const accessToken = userAuth.accessToken;
 
-      const userAuth = getAuthUserData();
-      if (userAuth) {
-        const refreshToken = userAuth.refreshToken;
-        const accessToken = userAuth.accessToken;
+//         if (!checkTokenExpire(refreshToken)) {
+//           store.dispatch(errorAction());
+//           removeAuthUserData();
+//         }
 
-        if (!checkTokenExpire(refreshToken)) {
-          store.dispatch(errorAction());
-          removeAuthUserData();
-        }
+//         if (!checkTokenExpire(accessToken)) {
+//           try {
+//             const response = await axiosInstace.post("auth/refresh-tokens", {
+//               refreshToken
+//             });
 
-        if (!checkTokenExpire(accessToken)) {
-          try {
-            const response = await axiosInstace.post("auth/refresh-tokens", {
-              refreshToken
-            });
+//             setAuthUserData({
+//               accessToken: response.data.accessToken,
+//               refreshToken: response.data.refreshToken,
+//               user: userAuth.user
+//             });
 
-            setAuthUserData({
-              accessToken: response.data.accessToken,
-              refreshToken: response.data.refreshToken,
-              user: userAuth.user
-            });
+//             return axiosInstace(originalRequest);
+//           } catch (e) {
+//             store.dispatch(errorAction());
+//             removeAuthUserData();
+//             console.log("Refresh token error: " + e.message);
+//           }
+//         }
+//       }
+//     }
 
-            return axiosInstace(originalRequest);
-          } catch (e) {
-            store.dispatch(errorAction());
-            removeAuthUserData();
-            console.log("Refresh token error: " + e.message);
-          }
-        }
-      }
-    }
+//     return Promise.reject(error);
+//   });
+// };
+// Add a request interceptor
 
-    return Promise.reject(error);
-  });
-};
+axiosInstace.interceptors.request.use(response => {
+  const userAuth = getAuthUserData();
+  // console.log(userAuth);
+  if (userAuth) {
+    response.headers.Authorization = `Bearer ${userAuth.accessToken}`;
+  } else {
+    delete response.headers.Authorization;
+  }
+  return response;
+});
+
 
 export const api = (requestType, url, payload) => {
   return new Promise((resolve, reject) => {
@@ -74,7 +88,7 @@ export const api = (requestType, url, payload) => {
       .then(response => {
         resolve(response.data);
       })
-      .catch(error => { 
+      .catch(error => {
         reject(error);
       });
   });

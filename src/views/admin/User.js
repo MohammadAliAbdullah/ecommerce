@@ -12,11 +12,12 @@ const User = () => {
 
     const getUsers = async (formData) => {
         try {
-            const response = await axios.get('http://localhost:1600/api/auth/users');
+            // const response = await axios.get('http://localhost:1600/api/auth/users');
+            // setUser(response.data);
             // console.log(response.data);
             const data = await api("get", "auth/users", formData);
-            console.log(response.data);
-            setUser(response.data);
+            console.log(data);
+            setUser(data);
         } catch (error) {
             console.log(error);
         }
