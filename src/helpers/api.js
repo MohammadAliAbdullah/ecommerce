@@ -16,7 +16,7 @@ export const initAuthInterceptor = (store, errorAction) => {
   axiosInstace.interceptors.request.use(response => {
     response.headers['abdullah'] = 'Authorization';
     const userAuth = getAuthUserData();
-    alert(userAuth);
+    //  alert(userAuth);
     if (userAuth) {
       response.headers.Authorization = `Bearer ${userAuth.accessToken}`;
     } else {
@@ -68,8 +68,8 @@ export const initAuthInterceptor = (store, errorAction) => {
     return Promise.reject(error);
   });
 };
-// Add a request interceptor
 
+// Add a request interceptor
 axiosInstace.interceptors.request.use(response => {
   const userAuth = getAuthUserData();
   // console.log(userAuth);
